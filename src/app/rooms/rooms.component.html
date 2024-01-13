@@ -1,0 +1,77 @@
+<h1>Welcome to {{ hotelName }}</h1>
+
+<!-- !Property data binding -->
+<div [hidden]="hideRooms">
+  <div [innerText]="newRoomName"></div>
+</div>
+<button (click)="toggle()" class="button">Toggle</button>
+
+<!-- !Directives: 1] Directives are used to manipulate appearance and behavior of the DOM
+            !2] Directives can not have templates
+            !3] Two types of directives:
+                   !i] Structural directives :- Can add or remove elements from DOM.Can change the appearance of the DOM
+                  !ii] Attribute directives :- Cannot add or remove elements from DOM.Can modify the DOM -->
+
+<!-- !Built-in directives -->
+<!-- *ngIf -->
+<!-- !NOT RECOMMENDED -->
+
+<!--* @if is a new template syntax for conditionally rendering elements in Angular templates. It's a built-in control flow syntax that allows you to conditionally show or hide page elements depending on a logical boolean condition. -->
+<div>
+  Room List:
+  <ul>
+    <li>
+      {{ room.totalRoom }}
+    </li>
+    @if (room.availableRoom > 0) {
+    <li>
+      {{ room.availableRoom }}
+    </li>
+    } @if (room.bookedRoom > 0) {
+
+    <li>
+      {{ room.bookedRoom }}
+    </li>
+    }
+  </ul>
+  <button (click)="bookRooms()">Book rooms</button>
+  <button (click)="unBookRooms()">UnBook rooms</button>
+
+  <!--* The @for template syntax is to Angular what the traditional for...loop is to JavaScript. -->
+
+  <div>
+    Room List:
+    <table>
+      <tr>
+        <th>Room Number</th>
+        <th>Room type</th>
+        <th>Room Price</th>
+        <th>Check in time</th>
+        <th>Check out time</th>
+      </tr>
+
+      @for (rooms of roomList; track room) {
+      <tr>
+        <td>
+          {{ rooms.roomNumber }}
+        </td>
+        <td>
+          {{ rooms.roomType }}
+        </td>
+        <td>
+          {{ rooms.price }}
+        </td>
+        <td>
+          {{ rooms.checkInTime }}
+        </td>
+        <td>
+          {{ rooms.checkOutTime }}
+        </td>
+      </tr>
+      }
+    </table>
+  </div>
+
+  <!--* The @switch syntax is for Angular what the switch statement is for Javascript.The @switch template syntax is used to select the right template section to render based on the value of an expression.Typically you want to use @switch when you have at least 2 or more different options to display, depending on the value of the expression 
+
+--></div>
