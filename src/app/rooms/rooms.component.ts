@@ -1,10 +1,13 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { Room, RoomList } from './Room';
+import { every } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { RoomListComponent } from './room-list/room-list.component';
 
 @Component({
   selector: 'app-rooms',
   standalone: true,
-  imports: [],
+  imports: [CommonModule,RoomListComponent],
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.scss',
   exportAs: 'RoomComponent',
@@ -69,6 +72,11 @@ export class RoomsComponent {
   unBookRooms() {
     this.room.availableRoom++;
     this.room.bookedRoom--;
+  }
+
+  selectedRoom = 'No room selected';
+  onSelect(event: any) {
+    this.selectedRoom = event.target?.value;
   }
 
   constructor() {}

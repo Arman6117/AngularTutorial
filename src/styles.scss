@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+div {
+    background: rgb(255, 235, 235);
+}
+.button {
+    background-color: teal;
+}
+
+.even {
+    background-color: steelblue;
+}
+
+.odd {
+    background-color:tomato;
+}

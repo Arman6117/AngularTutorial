@@ -39,39 +39,42 @@
 
   <!--* The @for template syntax is to Angular what the traditional for...loop is to JavaScript. -->
 
-  <div>
-    Room List:
-    <table>
-      <tr>
-        <th>Room Number</th>
-        <th>Room type</th>
-        <th>Room Price</th>
-        <th>Check in time</th>
-        <th>Check out time</th>
-      </tr>
+  
+  <app-room-list [rooms]="roomList"></app-room-list>
+  
 
-      @for (rooms of roomList; track room) {
-      <tr>
-        <td>
-          {{ rooms.roomNumber }}
-        </td>
-        <td>
-          {{ rooms.roomType }}
-        </td>
-        <td>
-          {{ rooms.price }}
-        </td>
-        <td>
-          {{ rooms.checkInTime }}
-        </td>
-        <td>
-          {{ rooms.checkOutTime }}
-        </td>
-      </tr>
-      }
-    </table>
+  <!--* The @switch syntax is for Angular what the switch statement is for Javascript.The @switch template syntax is used to select the right template section to render based on the value of an expression.Typically you want to use @switch when you have at least 2 or more different options to display, depending on the value of the expression -->
+  <div>
+    <label for="rooms">Select a room:</label>
+    <select name="rooms" id="rooms" (change)="onSelect($event)">
+      <option value="Default">No room selected</option>
+      <option value="Normal room">Normal room</option>
+      <option value="AC room">AC room</option>
+      <option value="Deluxe room">Deluxe room</option>
+    </select>
+    
+    <h3>Selected Room: {{ selectedRoom }}</h3>
+
+
+    
+    @switch (selectedRoom) { @case ('Normal room') {
+    <h4>Room Amenities: TV, Bathroom,Kitchen,Free Wi-Fi</h4>
+    } @case ('AC room') {
+    <h4>Room Amenities:Air conditioner, TV, Bathroom,Kitchen,Free Wi-Fi</h4>
+    } @case ('Deluxe room') {
+    <h4>
+      Room Amenities:Air conditioner, TV, Bathroom,Kitchen,Free Wi-Fi,2
+      Beds,Pools
+    </h4>
+    } @default {
+    <h4>Select a room to see it's Amenities</h4>
+    } }
   </div>
 
-  <!--* The @switch syntax is for Angular what the switch statement is for Javascript.The @switch template syntax is used to select the right template section to render based on the value of an expression.Typically you want to use @switch when you have at least 2 or more different options to display, depending on the value of the expression 
+  <!--! Pipes:  -->
+  <!--! 1] Pipes are used for data transformation -->
+  <!--! 2] Pipes don't change the actual object -->
+  <!--! 3] Pipes just change the data in the user interface rather than changing whole original data -->
 
---></div>
+
+</div>

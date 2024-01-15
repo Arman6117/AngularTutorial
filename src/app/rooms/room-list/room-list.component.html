@@ -1,0 +1,39 @@
+<p>room-list works!</p>
+<div>
+    Room List:
+    <table class="table">
+      <tr>
+        <th>Room Number</th>
+        <th>Room type</th>
+        <th>Room Price</th>
+        <th>Check in time</th>
+        <th>Check out time</th>
+        <!-- <th>Select Room</th> -->
+      </tr>
+
+      @for (rooms of rooms; track rooms) {
+      <tr class="{{ rooms.roomNumber % 2 == 0 ? 'even' : 'odd' }}">
+        <td class="">
+          {{ rooms.roomNumber }}
+        </td>
+        <td>
+          {{ rooms.roomType }}
+        </td>
+        <td>
+          {{ rooms.price }}
+        </td>
+        <td>
+          {{ rooms.checkInTime | date }}
+        </td>
+        <td>
+          {{ rooms.checkOutTime | date }}
+        </td>
+        <!-- <td>
+            <button class="btn btn-primary btn-sm" (click)="selectRoom(rooms)">
+                Select
+            </button> -->
+      
+      </tr>
+      }
+    </table>
+  </div>
